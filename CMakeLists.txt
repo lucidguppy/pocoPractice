@@ -1,0 +1,8 @@
+cmake_minimum_required (VERSION 2.8)
+set(CMAKE_CXX_FLAGS "-std=c++11")
+project (PocoTut)
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/poco/include/Poco")
+add_executable(PocoTut main.cpp)
+add_library(PocoFoundation SHARED IMPORTED)
+set_target_properties( PocoFoundation PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/poco/lib/libPocoFoundation.so )
+target_link_libraries(PocoTut PocoFoundation)
